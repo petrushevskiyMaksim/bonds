@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<title>bonds App</title>
+		<script type="module" crossorigin src="./assets/index-Cfp-qUxn.js"></script>
+		<link rel="stylesheet" crossorigin href="./assets/index-D4Qtd3Sb.css" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="bonds">
+				<div class="bonds__container">
+					<h1 class="bonds__title">Портфель облигаций</h1>
+					<div class="bonds__total-info total-info-bonds">
+						<ul class="total-info-bonds__list">
+							<li class="total-info-bonds__item">
+								<p>
+									Общие расходы на покупки :
+									<b><span id="expensesTotal"></span>p</b>
+								</p>
+							</li>
+							<li class="total-info-bonds__item">
+								<p>
+									Общий доход портфеля : <b><span>3000</span>p</b>
+								</p>
+							</li>
+							<li class="total-info-bonds__item">
+								<p>
+									Сумма дохода за месяц : <b><span>300</span>р</b>
+								</p>
+								<div class="total-info-bonds__month">
+									<select>
+										<option value="Январь">Январь</option>
+										<option value="Февраль">Февраль</option>
+										<option value="Март">Март</option>
+										<option value="Апрель">Апрель</option>
+										<option value="Май">Май</option>
+										<option value="Июнь">Июнь</option>
+										<option value="Июль">Июль</option>
+										<option value="Август">Август</option>
+										<option value="Сентябрь">Сентябрь</option>
+										<option value="Октябрь">Октябрь</option>
+										<option value="Ноябрь">Ноябрь</option>
+										<option value="Декабрь">Декабрь</option>
+									</select>
+									<button class="total-info-bonds__btn-sum">Посчитать</button>
+								</div>
+							</li>
+							<li class="total-info-bonds__item">
+								<p>
+									Средняя годовая доходность всех бумаг :
+									<b><span id="averageIncome"></span>%</b>
+								</p>
+							</li>
+						</ul>
+					</div>
+					<div class="bonds__main main-bonds">
+						<h2 class="main-bonds__title">Список облигаций</h2>
+						<div class="main-bonds__buttons">
+							<button id="addBond" class="main-bonds__add-bond">
+								Добавить облигацию
+							</button>
+							<button id="openList" class="main-bonds__open-bond">
+								Развернуть список
+							</button>
+						</div>
+						<ul
+							id="bondsList"
+							class="main-bonds__list list-bonds open-list"
+						></ul>
+					</div>
+				</div>
+
+				<div id="popup" class="bonds__popup hidden">
+					<h3 class="popup__title">Введите данные по бумаге</h3>
+					<ul class="bonds__popup-list form-popup">
+						<li class="form-popup__item item-form">
+							<p class="item-form__text">Название облигации</p>
+							<input name="name" type="text" class="item-form__input" />
+						</li>
+						<li class="form-popup__item item-form">
+							<p class="item-form__text">Кол-во купленных бумаг</p>
+							<input name="sumBonds" type="number" class="item-form__input" />
+						</li>
+						<li class="form-popup__item item-form">
+							<p class="item-form__text">Номинал</p>
+							<input
+								name="bondParValue"
+								type="number"
+								class="item-form__input"
+							/>
+						</li>
+						<li class="form-popup__item item-form">
+							<p class="item-form__text">Цена покупки</p>
+							<input name="price" type="number" class="item-form__input" />
+						</li>
+						<li class="form-popup__item item-form">
+							<p class="item-form__text">Налог вашего брокера</p>
+							<input name="brokerTax" type="number" class="item-form__input" />
+						</li>
+						<li class="form-popup__item item-form">
+							<p class="item-form__text">Дата покупки</p>
+							<input
+								id="dateBuy"
+								name="dateBuy"
+								type="date"
+								class="item-form__input"
+							/>
+						</li>
+						<li class="form-popup__item item-form">
+							<p class="item-form__text">Дата продажи / погашения</p>
+							<input name="dateSell" type="date" class="item-form__input" />
+						</li>
+						<li class="form-popup__item item-form">
+							<p class="item-form__text">Купон</p>
+							<input
+								name="couponPrice"
+								type="number"
+								class="item-form__input"
+							/>
+						</li>
+						<li class="form-popup__item item-form">
+							<p class="item-form__text">Дата купонов</p>
+							<div class="item-form__date-buy-coupons">
+								<input
+									name="dateCoupon1"
+									type="date"
+									class="item-form__input"
+								/>
+								<input
+									name="dateCoupon2"
+									type="date"
+									class="item-form__input"
+								/>
+							</div>
+						</li>
+						<li class="form-popup__item item-form">
+							<p class="item-form__text">Кол-во купонов в год</p>
+							<input
+								name="numberOfCoupons"
+								type="number"
+								class="item-form__input"
+							/>
+						</li>
+						<li class="form-popup__item item-form">
+							<p class="item-form__text">НКД</p>
+							<input name="nkd" type="number" class="item-form__input" />
+						</li>
+					</ul>
+
+					<div class="popup__control control-popup">
+						<button id="addBondBtn" class="control-popup__add btn-popup">
+							Добавить
+						</button>
+						<button id="cancelPopupBtn" class="control-popup__cancel btn-popup">
+							Отмена
+						</button>
+					</div>
+					<button id="closePopup" class="close-popup"></button>
+				</div>
+				<div id="overlay" class="bonds__overlay hidden"></div>
+			</div>
+		</div>
+	</body>
+</html>
